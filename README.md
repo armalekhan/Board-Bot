@@ -1,18 +1,16 @@
 # Board-Bot
 
-# Twitter - Part II
+This is a discord bot with interactive functions for students to access important school material and keep up with their classmates
 
-This is a basic twitter app to view, compose, favorite, and retweet tweets.
-
-Time spent: **5** hours spent in total
+Time spent: **24** hours spent in total
 
 ## User Stories
 
-The following **required** functionality is completed:
+The following functionality is completed:
 
-- [x] User can compose a tweet. (4pts)
-- [x] User can favorite a tweet. (4pts)
-- [x] User can retweet a tweet. (2pts)
+- [x] Reminders : User can set a reminder for a specific assignment for a given day
+- [x] GPA Calculator: User inputs letter grades for their courses, and average Grade point Average is displayed
+- [x] Polls : User can create a poll for the class, for example, to see how everyone did on a given assignment
 
 The following **bonus** features are implemented:
 
