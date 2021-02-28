@@ -1,7 +1,7 @@
 module.exports = {
   name: "ping",
   description: "ping command sends the word 'pong' back",
-  execute(message, args) {
+  execute(message, arg) {
     if (args[0] == "help") {
       message.channel.send(this.description);
     } else {

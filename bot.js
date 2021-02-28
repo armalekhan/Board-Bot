@@ -1,13 +1,11 @@
-const Discord = require("discord.js");
-
-const client = new Discord.Client();
-const config = require("./pollconfig.json");
-const Datastore = require("nedb");
-const Poll = require("./poll.js");
-const fs = require("fs");
+//"dev": "nodemon ./src/bot.js"
 require("dotenv").config();
 
-client.commands = new Discord.Collection();
+const config = require("../pollconfig.json");
+const Poll = require("./poll.js");
+const Discord = require("discord.js");
+const Datastore = require("nedb");
+const client = new Discord.Client();
 
 const commandSyntaxRegex = new RegExp(
   `^${config.prefix}\\s(((time=\\d+([smhd]?\\s))?("[^"\\n]+"\\s?){1,11})|(help)|(examples)|(end\\s\\d+)|(invite))$`
@@ -183,17 +181,6 @@ function cleanDatabase() {
   );
 }
 
-const commandFiles = fs
-  .readdirSync("./commands/")
-  .filter((file) => file.endsWith(".js"));
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-
-  client.commands.set(command.name, command);
-}
-
-const prefix = "!";
-
 client.on("ready", () => {
   console.log(`${client.user.tag} has logged in.`);
   client.user.setActivity(`${config.prefix} help`);
@@ -315,21 +302,6 @@ client.on("message", async (message) => {
       );
     }
   }
-
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-  const arg = message.content.slice(prefix.length).split(" ");
-  const commandName = arg.shift().toLowerCase();
-
-  if (!client.commands.has(commandName)) return;
-
-  try {
-    client.commands.get(commandName).execute(message, arg);
-  } catch (error) {
-    console.error(error);
-    message.reply("there was an error trying to execute that command!");
-  }
 });
 
-const key = process.env.BOT_TOKEN;
-client.login(key);
+client.login(process.env.BOT_TOKEN);

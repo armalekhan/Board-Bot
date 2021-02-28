@@ -1,7 +1,7 @@
 module.exports = {
   name: "dm",
   description: "dm",
-  execute(message, args) {
+  execute(message, arg) {
     message.author.send("pluckshit");
   },
 };

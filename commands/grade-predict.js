@@ -1,7 +1,7 @@
 module.exports = {
   name: "gradePredict",
   description: "grade Predict",
-  execute(message, args) {
+  execute(message, arg) {
     const filter = (m) => m.author.id === message.author.id;
     message.author.send("How many graded categories do you have? ");
     message.channel

@@ -2,12 +2,12 @@ module.exports = {
   name: "gpa-calc",
   description:
     "!gpa [numClasses]: Asks you your letter grade for the number of classes and calculates GPA.",
-  execute(message, args) {
-    if (args[0] == "help") {
+  execute(message, arg) {
+    if (arg[0] == "help") {
       message.channel.send(this.description);
     } else {
       const filter = (m) => m.author.id === message.author.id;
-      const classes = args[0] == null ? 5 : args[0];
+      const classes = arg[0] == null ? 5 : args[0];
       const credits = [3, 3, 1, 4, 2]; // would orginally get from blackboard
       const grades = [];
       let counter = 0;
